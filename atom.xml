@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-26T03:49:17.000Z</updated>
+  <updated>2017-04-26T04:33:20.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,17 +16,81 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2017/04/26/hello-world/"/>
+    <id>http://yoursite.com/2017/04/26/hello-world/</id>
+    <published>2017-04-26T04:33:19.000Z</published>
+    <updated>2017-04-26T04:33:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Atom配置（VIM党）</title>
     <link href="http://yoursite.com/2017/04/26/Atom%E9%85%8D%E7%BD%AE%EF%BC%88VIM%E5%85%9A%EF%BC%89/"/>
     <id>http://yoursite.com/2017/04/26/Atom配置（VIM党）/</id>
     <published>2017-04-26T03:48:40.000Z</published>
-    <updated>2017-04-26T03:49:17.000Z</updated>
+    <updated>2017-04-27T03:30:35.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Atom配置（VIM党）"><a href="#Atom配置（VIM党）" class="headerlink" title="Atom配置（VIM党）"></a>Atom配置（VIM党）</h1>]]></content>
+    <content type="html"><![CDATA[<p>为什么说是Vim党呢？首先我是一个深度的Vim用户，自己的电脑上基本上可以兼容Vim的插件都有，所有浏览器，所有编辑器都是Vim的操作方式，当然包括我现在书写的markdown的软件<a href="https://github.com/egoist/eme" target="_blank" rel="external">EME</a>也是兼容的Vim的操作。</p>
+<p>自从4年前，一次偶尔的机会接触到了Vim这款编辑器，就深深的被吸引了。</p>
+<p>从刚开始实用别人的配置文件，直到最后自己用了2年的时间打磨出了自己的配置文件，我曾经用了1个月的时间翻遍了<a href="http://vimawesome.com/" target="_blank" rel="external">VimAwesome</a>的所有插件，从当初100+的插件配置到现在插件也就是10+配置文件也从当初3000+行到现在400+行，开始喜欢修改快捷键，喜欢什么都用插件来代替，到现在全部原生快捷键，能用<code>VimScript</code>实现的功能都不会去用插件来代替。</p>
+<p>也许我们对一个事物的追求到了一定程度的时候，我就回到起点，感觉一切都是最原始的是最好的。</p>
+<p>我写这篇文章呢？</p>
+<p>不管是vim 还是Gvim 还是spacemacs 他们都做的很好，也许是自己对UI要求过高吧，Atom的界面做的很棒。</p>
+<p>sublime VScode 等等的编辑器，虽然也都有vim的插件支持，但是目前我发现的只有atom的这个插件做的是好的，速度也是相当快的。基本可以平移。</p>
+<p>这里借用作者的一幅图</p>
+<p><img src="https://camo.githubusercontent.com/8d45d7e4100511d56103b8b8b022ce86deb4b9cc/687474703a2f2f692e696d6775722e636f6d2f556d786a6f63442e676966" alt=""></p>
+<a id="more"></a>
+<p>这篇文章里面的配置，也许不适合所有人，有几个前提如果你经历过这个过程，也许会对你有帮助，否则，此文也许对你没有任何的帮助。</p>
+<hr>
+<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><ul>
+<li>你使用过vim，曾经用过也可以，最起码这些东西对你而言不是问题<a href="https://vim.rtorr.com/lang/zh_cn/" target="_blank" rel="external">Vim基本快捷键</a></li>
+<li><p>你用过<a href="http://spacemacs.org/" target="_blank" rel="external">Spacemacs</a></p>
+<p>如果以上两条你都没问题，那么接下来的内容你也许会感兴趣。</p>
+</li>
+</ul>
+<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p> Atom的安装这里省略。<a href="https://atom.io/" target="_blank" rel="external">官网</a></p>
+<h2 id="基本插件"><a href="#基本插件" class="headerlink" title="基本插件"></a>基本插件</h2><p> 下载完成先安装一个插件<br> <a href="https://atom.io/packages/proton-mode" target="_blank" rel="external">proton-mode</a><br> <a href="https://github.com/dvcrn/proton-bin" target="_blank" rel="external">Github地址</a></p>
+<p> 安装完成在你的西贡根目录会有个<code>.proton</code>的配置文件，Atom的所有配置都需要在这里修改，如果直接在软件内部修改，每次重新启动atom所有的设置都会被重置。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ;; 层的设置(spacemacs层的概念包含了一系列插件)</div><div class="line">  <span class="symbol">:layers</span></div><div class="line">  [</div><div class="line">    <span class="symbol">:core</span></div><div class="line">    <span class="symbol">:tools/git</span></div><div class="line">    <span class="symbol">:tools/linter</span></div><div class="line">    <span class="symbol">:tools/minimap</span></div><div class="line">    <span class="symbol">:lang/javascript</span></div><div class="line">  ]</div><div class="line">  ;; 自定义添加插件(如果需要安装插件必须在这里添加)</div><div class="line">  <span class="symbol">:additional-packages</span></div><div class="line">  [</div><div class="line">    <span class="symbol">:atom-ternjs</span></div><div class="line">    <span class="symbol">:tag</span></div><div class="line">    <span class="symbol">:autocomplete-modules</span></div><div class="line">    <span class="symbol">:csslint</span></div><div class="line">    <span class="symbol">:htmlhint</span></div><div class="line">    <span class="symbol">:pigments</span></div><div class="line">    <span class="symbol">:atom-beautify</span></div><div class="line">    <span class="symbol">:open-in-browser</span></div><div class="line">    <span class="symbol">:tree-view-copy-relative-path</span></div><div class="line">    <span class="symbol">:pristine-ui</span></div><div class="line">    <span class="symbol">:duotone-dark-space-syntax</span></div><div class="line">    <span class="symbol">:emmet</span></div><div class="line">    <span class="symbol">:docblockr</span></div><div class="line">    <span class="symbol">:autocomplete-plus</span></div><div class="line">    <span class="symbol">:auto-id-class</span></div><div class="line">    <span class="symbol">:glowing-cursor</span></div><div class="line">    <span class="symbol">:tree-view-tautoresize</span></div><div class="line">    <span class="symbol">:jumpy</span></div><div class="line">    <span class="symbol">:stylus</span></div><div class="line">    <span class="symbol">:atom-pug</span></div><div class="line">    <span class="symbol">:atom-pug</span></div><div class="line">  ]</div><div class="line">  ;; 禁用插件</div><div class="line">  <span class="symbol">:disabled-packages</span> [</div><div class="line">    <span class="symbol">:autoupdate-packages</span></div><div class="line">    <span class="symbol">:about</span></div><div class="line">    <span class="symbol">:welcome</span></div><div class="line">    <span class="symbol">:status-bar</span></div><div class="line">    <span class="symbol">:zentabs</span></div><div class="line">    <span class="symbol">:file-icons</span></div><div class="line">    <span class="symbol">:easy-motion-redux</span></div><div class="line">    <span class="symbol">:relative-numbers</span></div><div class="line">    <span class="symbol">:encoding-selector</span></div><div class="line">  ]</div><div class="line">  ;; 编辑器的配置</div><div class="line">  <span class="symbol">:configuration</span></div><div class="line">  [</div><div class="line">    [<span class="string">"editor.fontFamily"</span> <span class="string">"Office Code pro"</span>]</div><div class="line">    [<span class="string">"editor.fontSize"</span> <span class="number">18</span>]</div><div class="line">    [<span class="string">"editor.preferredLineLength"</span> <span class="string">"900"</span>]</div><div class="line">    [<span class="string">"editor.tabLength"</span> <span class="number">4</span>]</div><div class="line">    [<span class="string">"editor.tabType"</span> <span class="string">"auto"</span>]</div><div class="line">    [<span class="string">"editor.atomicSoftTabs"</span> <span class="keyword">false</span>]</div><div class="line">    [<span class="string">"editor.nonWordCharacters"</span> <span class="string">"./\\()\"':,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;`~?"</span>]</div><div class="line">    [<span class="string">"core.themes"</span> [<span class="string">"pristine-ui"</span> <span class="string">"duotone-dark-space-syntax"</span>]]</div><div class="line">    [<span class="string">"proton.core.showTabBar"</span> <span class="keyword">true</span>]</div><div class="line">    [<span class="string">"proton.core.relativeLineNumbers"</span> <span class="keyword">false</span>]</div><div class="line">    [<span class="string">"proton.core.inputProvider"</span> <span class="symbol">:vim-mode-plus</span>]</div><div class="line">  ]</div><div class="line">  ;; 快捷键设置</div><div class="line">  <span class="symbol">:keybindings</span> &#123;&#125;</div><div class="line">  <span class="symbol">:keymaps</span> [&#123;<span class="symbol">:selector</span> <span class="string">".tree-view"</span> <span class="symbol">:keymap</span> [[<span class="string">"escape"</span> <span class="string">"tree-view:toggle"</span>]]&#125;</div><div class="line">            &#123;<span class="symbol">:selector</span> <span class="string">"atom-text-editor.vim-mode-plus:not(.normal-mode)"</span> <span class="symbol">:keymap</span> [[<span class="string">"f d"</span> <span class="string">"vim-mode-plus:activate-normal-mode"</span>]]&#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们只需要备份好这个配置文件，就可以，每次启动atom的时候它都会加载这个配置文件，对插件和配置进行重置。</p>
+<h3 id="在这里我顺便推荐几个资源："><a href="#在这里我顺便推荐几个资源：" class="headerlink" title="在这里我顺便推荐几个资源："></a>在这里我顺便推荐几个资源：</h3><ul>
+<li><a href="https://github.com/egoist/eme" target="_blank" rel="external">EME</a> mac下编辑markdown很方便，是我目前发现最好用的一款markdown编辑器</li>
+<li><a href="http://vimawesome.com/" target="_blank" rel="external">VimAwesome</a> 如果你执意用vim的这个网站你必须知道的。vim插件网站</li>
+<li><a href="http://spacemacs.org/" target="_blank" rel="external">Spacemacs</a> 如果你没有用过spacemacs的建议你去看看。</li>
+<li><a href="https://vim.rtorr.com/lang/zh_cn/" target="_blank" rel="external">Vim基本快捷键</a> Vim的基本快捷键，多语言的。</li>
+</ul>
+]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Atom配置（VIM党）&quot;&gt;&lt;a href=&quot;#Atom配置（VIM党）&quot; class=&quot;headerlink&quot; title=&quot;Atom配置（VIM党）&quot;&gt;&lt;/a&gt;Atom配置（VIM党）&lt;/h1&gt;
+      &lt;p&gt;为什么说是Vim党呢？首先我是一个深度的Vim用户，自己的电脑上基本上可以兼容Vim的插件都有，所有浏览器，所有编辑器都是Vim的操作方式，当然包括我现在书写的markdown的软件&lt;a href=&quot;https://github.com/egoist/eme&quot;&gt;EME&lt;/a&gt;也是兼容的Vim的操作。&lt;/p&gt;
+&lt;p&gt;自从4年前，一次偶尔的机会接触到了Vim这款编辑器，就深深的被吸引了。&lt;/p&gt;
+&lt;p&gt;从刚开始实用别人的配置文件，直到最后自己用了2年的时间打磨出了自己的配置文件，我曾经用了1个月的时间翻遍了&lt;a href=&quot;http://vimawesome.com/&quot;&gt;VimAwesome&lt;/a&gt;的所有插件，从当初100+的插件配置到现在插件也就是10+配置文件也从当初3000+行到现在400+行，开始喜欢修改快捷键，喜欢什么都用插件来代替，到现在全部原生快捷键，能用&lt;code&gt;VimScript&lt;/code&gt;实现的功能都不会去用插件来代替。&lt;/p&gt;
+&lt;p&gt;也许我们对一个事物的追求到了一定程度的时候，我就回到起点，感觉一切都是最原始的是最好的。&lt;/p&gt;
+&lt;p&gt;我写这篇文章呢？&lt;/p&gt;
+&lt;p&gt;不管是vim 还是Gvim 还是spacemacs 他们都做的很好，也许是自己对UI要求过高吧，Atom的界面做的很棒。&lt;/p&gt;
+&lt;p&gt;sublime VScode 等等的编辑器，虽然也都有vim的插件支持，但是目前我发现的只有atom的这个插件做的是好的，速度也是相当快的。基本可以平移。&lt;/p&gt;
+&lt;p&gt;这里借用作者的一幅图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/8d45d7e4100511d56103b8b8b022ce86deb4b9cc/687474703a2f2f692e696d6775722e636f6d2f556d786a6f63442e676966&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
