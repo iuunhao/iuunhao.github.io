@@ -2,28 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/04/27/Javascript-pattern/</loc>
+    <loc>http://yoursite.com/2017/04/28/Git%E5%A4%9A%E8%B4%A6%E5%8F%B7%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2017-04-28T05:10:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/04/28/Javascript%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0)/</loc>
+    
+    <lastmod>2017-04-28T04:09:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/04/27/Javascript%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</loc>
     
     <lastmod>2017-04-27T05:55:24.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2014/09/27/Sublime-config/</loc>
+    <loc>http://yoursite.com/2014/09/27/Sublime%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2017-04-27T04:51:29.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/02/13/Javascript-concept/</loc>
-    
-    <lastmod>2017-04-27T04:18:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/03/26/Atom-for-vim/</loc>
+    <loc>http://yoursite.com/2016/03/26/Atom%E9%85%8D%E7%BD%AE%EF%BC%88VIM%E5%85%9A%EF%BC%89/</loc>
     
     <lastmod>2017-04-27T03:42:13.000Z</lastmod>
     

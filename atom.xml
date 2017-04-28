@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-27T05:55:24.000Z</updated>
+  <updated>2017-04-28T05:10:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,9 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>如何在一台电脑配置多个Git账户</title>
+    <link href="http://yoursite.com/2017/04/28/Git%E5%A4%9A%E8%B4%A6%E5%8F%B7%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2017/04/28/Git多账号配置/</id>
+    <published>2017-04-28T03:30:19.000Z</published>
+    <updated>2017-04-28T05:10:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://git-scm.com/" target="_blank" rel="external">Git</a>相比大家已经不陌生了，也许是现在用的最多的版本控制工具了。</p>
+<p>这里我不对Git的使用做过多的说明，如果你还没用过Git的话，我建议你先去学习下吧，对你会有很大的帮助，这里我奉上 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a>。</p>
+<p>同时我这里操作的平台是MacOS，当然不同的平台会有稍微的不同，不过我相信通过度娘，你都可以得到解决。</p>
+<p>今天我主要来说一下，在一台电脑上设置多个Git账号。</p>
+<a id="more"></a>
+<p>在<code>~/.ssh</code>目录下保存所有生成的密钥，建立<code>config</code>文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.ssh/config</div></pre></td></tr></table></figure>
+<p>config文件内容如下：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Host github.com</div><div class="line">HostName github.com</div><div class="line"><span class="keyword">User</span> <span class="title">xiaoming</span></div><div class="line">IdentityFile ~/.ssh/id_rsa</div><div class="line"></div><div class="line">Host iuunhao</div><div class="line">HostName github.com</div><div class="line"><span class="keyword">User</span> <span class="title">iuunhao</span></div><div class="line">IdentityFile ~/.ssh/id_rsa_iuunhao</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　$ ssh-keygen -t rsa -C <span class="string">"email"</span></div></pre></td></tr></table></figure>
+<p>  我们在生成ssh的时候在第一项填写一个名字<code>id_rsa_iuunhao</code></p>
+<p>  在<code>config</code>文件里的<code>IdentityFile</code>面需要对调用对应的文件。</p>
+<p>  而<code>HostName</code>这里需要修改对应的<code>id_rsa_iuunhao</code></p>
+<p>  这个时候我们在clone项目的时候，<code>github.com</code>代表默认的<code>ssh key</code>就是在生成<code>ssh key</code>的时候没有填写任何内容那个用户</p>
+<p>  如果是<code>iuunhao</code>用户，那在clone的时候需要修改一下地址</p>
+<p> 原的地址：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@github.com:iuunhao/demos.git</div></pre></td></tr></table></figure></p>
+<p>修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@iuunhao:iuunhao/demos.git</div></pre></td></tr></table></figure></p>
+<p>这里的<code>xiaoming</code>是默认用户，正常clone项目就可以使用。</p>
+<p>全局的git <code>user.name</code>及<code>user.email</code>都配置的是<code>xiaoming</code>的信息</p>
+<p>但是需要用<code>iuunhao</code> 提交代码的时候需要注意，我们需要手动设置该项目的</p>
+<p>需要注意的是<code>User</code>这个内容要填写你的github用户名，其实就是git的<code>user.name</code>及<code>user.email</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config user.name <span class="string">"username"</span></div><div class="line">git config user.email <span class="string">"email"</span></div></pre></td></tr></table></figure>
+<p>需要注意的这里取消<code>--global</code>参数。</p>
+<p>如果不注意这点的话，提交代码没问题，但是显示的信息，就不对了。</p>
+<p>会出现这样的情景。<br><img src="http://ww3.sinaimg.cn/large/006tNbRwly1ff2bd6m6paj30ql05ejrz.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;相比大家已经不陌生了，也许是现在用的最多的版本控制工具了。&lt;/p&gt;
+&lt;p&gt;这里我不对Git的使用做过多的说明，如果你还没用过Git的话，我建议你先去学习下吧，对你会有很大的帮助，这里我奉上 &lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot;&gt;廖雪峰的Git教程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;同时我这里操作的平台是MacOS，当然不同的平台会有稍微的不同，不过我相信通过度娘，你都可以得到解决。&lt;/p&gt;
+&lt;p&gt;今天我主要来说一下，在一台电脑上设置多个Git账号。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Javascript代码片段（持续更新）</title>
-    <link href="http://yoursite.com/2017/04/27/Javascript-pattern/"/>
-    <id>http://yoursite.com/2017/04/27/Javascript-pattern/</id>
+    <link href="http://yoursite.com/2017/04/27/Javascript%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/04/27/Javascript代码片段（持续更新）/</id>
     <published>2017-04-27T04:26:06.000Z</published>
     <updated>2017-04-27T05:55:24.000Z</updated>
     
@@ -38,73 +84,11 @@
   </entry>
   
   <entry>
-    <title>Atom配置（VIM党）</title>
-    <link href="http://yoursite.com/2016/03/26/Atom-for-vim/"/>
-    <id>http://yoursite.com/2016/03/26/Atom-for-vim/</id>
-    <published>2016-03-26T03:48:40.000Z</published>
-    <updated>2017-04-27T03:42:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>为什么说是Vim党呢？首先我是一个深度的Vim用户，自己的电脑上基本上可以兼容Vim的插件都有，所有浏览器，所有编辑器都是Vim的操作方式，当然包括我现在书写的markdown的软件<a href="https://github.com/egoist/eme" target="_blank" rel="external">EME</a>也是兼容的Vim的操作。</p>
-<p>自从4年前，一次偶尔的机会接触到了Vim这款编辑器，就深深的被吸引了。</p>
-<p>从刚开始实用别人的配置文件，直到最后自己用了2年的时间打磨出了自己的配置文件，我曾经用了1个月的时间翻遍了<a href="http://vimawesome.com/" target="_blank" rel="external">VimAwesome</a>的所有插件，从当初100+的插件配置到现在插件也就是10+配置文件也从当初3000+行到现在400+行，开始喜欢修改快捷键，喜欢什么都用插件来代替，到现在全部原生快捷键，能用<code>VimScript</code>实现的功能都不会去用插件来代替。</p>
-<p>也许我们对一个事物的追求到了一定程度的时候，我就回到起点，感觉一切都是最原始的是最好的。</p>
-<p>我写这篇文章呢？</p>
-<p>不管是vim 还是Gvim 还是spacemacs 他们都做的很好，也许是自己对UI要求过高吧，Atom的界面做的很棒。</p>
-<p>sublime VScode 等等的编辑器，虽然也都有vim的插件支持，但是目前我发现的只有atom的这个插件做的是好的，速度也是相当快的。基本可以平移。<br><a id="more"></a><br>这里借用作者的一幅图<br><img src="https://camo.githubusercontent.com/8d45d7e4100511d56103b8b8b022ce86deb4b9cc/687474703a2f2f692e696d6775722e636f6d2f556d786a6f63442e676966" alt=""></p>
-<p>快捷键基本也是通用的(space 代替空格)</p>
-<h3 id="常用快捷键-也可以自定义"><a href="#常用快捷键-也可以自定义" class="headerlink" title="常用快捷键(也可以自定义)"></a>常用快捷键(也可以自定义)</h3><ul>
-<li>SPACE f :显示所有快捷键</li>
-<li>SPACE f f :显示文件列表</li>
-<li>SPACE b b :显示当前buffer</li>
-<li>SAPCE l :移动当前工作区的位置到右侧</li>
-<li>SAPCE k :移动当前工作区的位置到上侧</li>
-<li>SAPCE h :移动当前工作区的位置到左侧</li>
-<li>SAPCE j :移动当前工作区的位置到下侧</li>
-</ul>
-<p>这篇文章里面的配置，也许不适合所有人，有几个前提如果你经历过这个过程，也许会对你有帮助，否则，此文也许对你没有任何的帮助。</p>
-<hr>
-<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><ul>
-<li>你使用过vim，曾经用过也可以，最起码这些东西对你而言不是问题<a href="https://vim.rtorr.com/lang/zh_cn/" target="_blank" rel="external">Vim基本快捷键</a></li>
-<li><p>你用过<a href="http://spacemacs.org/" target="_blank" rel="external">Spacemacs</a></p>
-<p>如果以上两条你都没问题，那么接下来的内容你也许会感兴趣。</p>
-</li>
-</ul>
-<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p> Atom的安装这里省略。<a href="https://atom.io/" target="_blank" rel="external">官网</a></p>
-<h2 id="基本插件"><a href="#基本插件" class="headerlink" title="基本插件"></a>基本插件</h2><p> 下载完成先安装一个插件<br> <a href="https://atom.io/packages/proton-mode" target="_blank" rel="external">proton-mode</a><br> <a href="https://github.com/dvcrn/proton-bin" target="_blank" rel="external">Github地址</a></p>
-<p> 安装完成在你的西贡根目录会有个<code>.proton</code>的配置文件，Atom的所有配置都需要在这里修改，如果直接在软件内部修改，每次重新启动atom所有的设置都会被重置。</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ;; 层的设置(spacemacs层的概念包含了一系列插件)</div><div class="line">  <span class="symbol">:layers</span></div><div class="line">  [</div><div class="line">    <span class="symbol">:core</span></div><div class="line">    <span class="symbol">:tools/git</span></div><div class="line">    <span class="symbol">:tools/linter</span></div><div class="line">    <span class="symbol">:tools/minimap</span></div><div class="line">    <span class="symbol">:lang/javascript</span></div><div class="line">  ]</div><div class="line">  ;; 自定义添加插件(如果需要安装插件必须在这里添加)</div><div class="line">  <span class="symbol">:additional-packages</span></div><div class="line">  [</div><div class="line">    <span class="symbol">:atom-ternjs</span></div><div class="line">    <span class="symbol">:tag</span></div><div class="line">    <span class="symbol">:autocomplete-modules</span></div><div class="line">    <span class="symbol">:csslint</span></div><div class="line">    <span class="symbol">:htmlhint</span></div><div class="line">    <span class="symbol">:pigments</span></div><div class="line">    <span class="symbol">:atom-beautify</span></div><div class="line">    <span class="symbol">:open-in-browser</span></div><div class="line">    <span class="symbol">:tree-view-copy-relative-path</span></div><div class="line">    <span class="symbol">:pristine-ui</span></div><div class="line">    <span class="symbol">:duotone-dark-space-syntax</span></div><div class="line">    <span class="symbol">:emmet</span></div><div class="line">    <span class="symbol">:docblockr</span></div><div class="line">    <span class="symbol">:autocomplete-plus</span></div><div class="line">    <span class="symbol">:auto-id-class</span></div><div class="line">    <span class="symbol">:glowing-cursor</span></div><div class="line">    <span class="symbol">:tree-view-tautoresize</span></div><div class="line">    <span class="symbol">:jumpy</span></div><div class="line">    <span class="symbol">:stylus</span></div><div class="line">    <span class="symbol">:atom-pug</span></div><div class="line">    <span class="symbol">:atom-pug</span></div><div class="line">  ]</div><div class="line">  ;; 禁用插件</div><div class="line">  <span class="symbol">:disabled-packages</span> [</div><div class="line">    <span class="symbol">:autoupdate-packages</span></div><div class="line">    <span class="symbol">:about</span></div><div class="line">    <span class="symbol">:welcome</span></div><div class="line">    <span class="symbol">:status-bar</span></div><div class="line">    <span class="symbol">:zentabs</span></div><div class="line">    <span class="symbol">:file-icons</span></div><div class="line">    <span class="symbol">:easy-motion-redux</span></div><div class="line">    <span class="symbol">:relative-numbers</span></div><div class="line">    <span class="symbol">:encoding-selector</span></div><div class="line">  ]</div><div class="line">  ;; 编辑器的配置</div><div class="line">  <span class="symbol">:configuration</span></div><div class="line">  [</div><div class="line">    [<span class="string">"editor.fontFamily"</span> <span class="string">"Office Code pro"</span>]</div><div class="line">    [<span class="string">"editor.fontSize"</span> <span class="number">18</span>]</div><div class="line">    [<span class="string">"editor.preferredLineLength"</span> <span class="string">"900"</span>]</div><div class="line">    [<span class="string">"editor.tabLength"</span> <span class="number">4</span>]</div><div class="line">    [<span class="string">"editor.tabType"</span> <span class="string">"auto"</span>]</div><div class="line">    [<span class="string">"editor.atomicSoftTabs"</span> <span class="keyword">false</span>]</div><div class="line">    [<span class="string">"editor.nonWordCharacters"</span> <span class="string">"./\\()\"':,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;`~?"</span>]</div><div class="line">    [<span class="string">"core.themes"</span> [<span class="string">"pristine-ui"</span> <span class="string">"duotone-dark-space-syntax"</span>]]</div><div class="line">    [<span class="string">"proton.core.showTabBar"</span> <span class="keyword">true</span>]</div><div class="line">    [<span class="string">"proton.core.relativeLineNumbers"</span> <span class="keyword">false</span>]</div><div class="line">    [<span class="string">"proton.core.inputProvider"</span> <span class="symbol">:vim-mode-plus</span>]</div><div class="line">  ]</div><div class="line">  ;; 快捷键设置</div><div class="line">  <span class="symbol">:keybindings</span> &#123;&#125;</div><div class="line">  <span class="symbol">:keymaps</span> [&#123;<span class="symbol">:selector</span> <span class="string">".tree-view"</span> <span class="symbol">:keymap</span> [[<span class="string">"escape"</span> <span class="string">"tree-view:toggle"</span>]]&#125;</div><div class="line">            &#123;<span class="symbol">:selector</span> <span class="string">"atom-text-editor.vim-mode-plus:not(.normal-mode)"</span> <span class="symbol">:keymap</span> [[<span class="string">"f d"</span> <span class="string">"vim-mode-plus:activate-normal-mode"</span>]]&#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们只需要备份好这个配置文件，就可以，每次启动atom的时候它都会加载这个配置文件，对插件和配置进行重置。</p>
-<h3 id="在这里我顺便推荐几个资源："><a href="#在这里我顺便推荐几个资源：" class="headerlink" title="在这里我顺便推荐几个资源："></a>在这里我顺便推荐几个资源：</h3><ul>
-<li><a href="https://github.com/egoist/eme" target="_blank" rel="external">EME</a> mac下编辑markdown很方便，是我目前发现最好用的一款markdown编辑器</li>
-<li><a href="http://vimawesome.com/" target="_blank" rel="external">VimAwesome</a> 如果你执意用vim的这个网站你必须知道的。vim插件网站</li>
-<li><a href="http://spacemacs.org/" target="_blank" rel="external">Spacemacs</a> 如果你没有用过spacemacs的建议你去看看。</li>
-<li><a href="https://vim.rtorr.com/lang/zh_cn/" target="_blank" rel="external">Vim基本快捷键</a> Vim的基本快捷键，多语言的。</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为什么说是Vim党呢？首先我是一个深度的Vim用户，自己的电脑上基本上可以兼容Vim的插件都有，所有浏览器，所有编辑器都是Vim的操作方式，当然包括我现在书写的markdown的软件&lt;a href=&quot;https://github.com/egoist/eme&quot;&gt;EME&lt;/a&gt;也是兼容的Vim的操作。&lt;/p&gt;
-&lt;p&gt;自从4年前，一次偶尔的机会接触到了Vim这款编辑器，就深深的被吸引了。&lt;/p&gt;
-&lt;p&gt;从刚开始实用别人的配置文件，直到最后自己用了2年的时间打磨出了自己的配置文件，我曾经用了1个月的时间翻遍了&lt;a href=&quot;http://vimawesome.com/&quot;&gt;VimAwesome&lt;/a&gt;的所有插件，从当初100+的插件配置到现在插件也就是10+配置文件也从当初3000+行到现在400+行，开始喜欢修改快捷键，喜欢什么都用插件来代替，到现在全部原生快捷键，能用&lt;code&gt;VimScript&lt;/code&gt;实现的功能都不会去用插件来代替。&lt;/p&gt;
-&lt;p&gt;也许我们对一个事物的追求到了一定程度的时候，我就回到起点，感觉一切都是最原始的是最好的。&lt;/p&gt;
-&lt;p&gt;我写这篇文章呢？&lt;/p&gt;
-&lt;p&gt;不管是vim 还是Gvim 还是spacemacs 他们都做的很好，也许是自己对UI要求过高吧，Atom的界面做的很棒。&lt;/p&gt;
-&lt;p&gt;sublime VScode 等等的编辑器，虽然也都有vim的插件支持，但是目前我发现的只有atom的这个插件做的是好的，速度也是相当快的。基本可以平移。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="vim emacs atom spacemacs" scheme="http://yoursite.com/tags/vim-emacs-atom-spacemacs/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Javascript概念整理(持续更新)</title>
-    <link href="http://yoursite.com/2015/02/13/Javascript-concept/"/>
-    <id>http://yoursite.com/2015/02/13/Javascript-concept/</id>
-    <published>2015-02-13T04:10:49.000Z</published>
-    <updated>2017-04-27T04:18:55.000Z</updated>
+    <link href="http://yoursite.com/2016/04/28/Javascript%E6%A6%82%E5%BF%B5%E6%95%B4%E7%90%86(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0)/"/>
+    <id>http://yoursite.com/2016/04/28/Javascript概念整理(持续更新)/</id>
+    <published>2016-04-28T03:30:19.000Z</published>
+    <updated>2017-04-28T04:09:58.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>当函数可以记住并访问所在的作用域(全局作用域除外)时，就产生了闭包，即使函数是在当前作用域之外执行。</p>
 <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>作用域链，是由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
@@ -164,9 +148,71 @@
   </entry>
   
   <entry>
+    <title>Atom配置（VIM党）</title>
+    <link href="http://yoursite.com/2016/03/26/Atom%E9%85%8D%E7%BD%AE%EF%BC%88VIM%E5%85%9A%EF%BC%89/"/>
+    <id>http://yoursite.com/2016/03/26/Atom配置（VIM党）/</id>
+    <published>2016-03-26T03:48:40.000Z</published>
+    <updated>2017-04-27T03:42:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>为什么说是Vim党呢？首先我是一个深度的Vim用户，自己的电脑上基本上可以兼容Vim的插件都有，所有浏览器，所有编辑器都是Vim的操作方式，当然包括我现在书写的markdown的软件<a href="https://github.com/egoist/eme" target="_blank" rel="external">EME</a>也是兼容的Vim的操作。</p>
+<p>自从4年前，一次偶尔的机会接触到了Vim这款编辑器，就深深的被吸引了。</p>
+<p>从刚开始实用别人的配置文件，直到最后自己用了2年的时间打磨出了自己的配置文件，我曾经用了1个月的时间翻遍了<a href="http://vimawesome.com/" target="_blank" rel="external">VimAwesome</a>的所有插件，从当初100+的插件配置到现在插件也就是10+配置文件也从当初3000+行到现在400+行，开始喜欢修改快捷键，喜欢什么都用插件来代替，到现在全部原生快捷键，能用<code>VimScript</code>实现的功能都不会去用插件来代替。</p>
+<p>也许我们对一个事物的追求到了一定程度的时候，我就回到起点，感觉一切都是最原始的是最好的。</p>
+<p>我写这篇文章呢？</p>
+<p>不管是vim 还是Gvim 还是spacemacs 他们都做的很好，也许是自己对UI要求过高吧，Atom的界面做的很棒。</p>
+<p>sublime VScode 等等的编辑器，虽然也都有vim的插件支持，但是目前我发现的只有atom的这个插件做的是好的，速度也是相当快的。基本可以平移。<br><a id="more"></a><br>这里借用作者的一幅图<br><img src="https://camo.githubusercontent.com/8d45d7e4100511d56103b8b8b022ce86deb4b9cc/687474703a2f2f692e696d6775722e636f6d2f556d786a6f63442e676966" alt=""></p>
+<p>快捷键基本也是通用的(space 代替空格)</p>
+<h3 id="常用快捷键-也可以自定义"><a href="#常用快捷键-也可以自定义" class="headerlink" title="常用快捷键(也可以自定义)"></a>常用快捷键(也可以自定义)</h3><ul>
+<li>SPACE f :显示所有快捷键</li>
+<li>SPACE f f :显示文件列表</li>
+<li>SPACE b b :显示当前buffer</li>
+<li>SAPCE l :移动当前工作区的位置到右侧</li>
+<li>SAPCE k :移动当前工作区的位置到上侧</li>
+<li>SAPCE h :移动当前工作区的位置到左侧</li>
+<li>SAPCE j :移动当前工作区的位置到下侧</li>
+</ul>
+<p>这篇文章里面的配置，也许不适合所有人，有几个前提如果你经历过这个过程，也许会对你有帮助，否则，此文也许对你没有任何的帮助。</p>
+<hr>
+<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><ul>
+<li>你使用过vim，曾经用过也可以，最起码这些东西对你而言不是问题<a href="https://vim.rtorr.com/lang/zh_cn/" target="_blank" rel="external">Vim基本快捷键</a></li>
+<li><p>你用过<a href="http://spacemacs.org/" target="_blank" rel="external">Spacemacs</a></p>
+<p>如果以上两条你都没问题，那么接下来的内容你也许会感兴趣。</p>
+</li>
+</ul>
+<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p> Atom的安装这里省略。<a href="https://atom.io/" target="_blank" rel="external">官网</a></p>
+<h2 id="基本插件"><a href="#基本插件" class="headerlink" title="基本插件"></a>基本插件</h2><p> 下载完成先安装一个插件<br> <a href="https://atom.io/packages/proton-mode" target="_blank" rel="external">proton-mode</a><br> <a href="https://github.com/dvcrn/proton-bin" target="_blank" rel="external">Github地址</a></p>
+<p> 安装完成在你的西贡根目录会有个<code>.proton</code>的配置文件，Atom的所有配置都需要在这里修改，如果直接在软件内部修改，每次重新启动atom所有的设置都会被重置。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ;; 层的设置(spacemacs层的概念包含了一系列插件)</div><div class="line">  <span class="symbol">:layers</span></div><div class="line">  [</div><div class="line">    <span class="symbol">:core</span></div><div class="line">    <span class="symbol">:tools/git</span></div><div class="line">    <span class="symbol">:tools/linter</span></div><div class="line">    <span class="symbol">:tools/minimap</span></div><div class="line">    <span class="symbol">:lang/javascript</span></div><div class="line">  ]</div><div class="line">  ;; 自定义添加插件(如果需要安装插件必须在这里添加)</div><div class="line">  <span class="symbol">:additional-packages</span></div><div class="line">  [</div><div class="line">    <span class="symbol">:atom-ternjs</span></div><div class="line">    <span class="symbol">:tag</span></div><div class="line">    <span class="symbol">:autocomplete-modules</span></div><div class="line">    <span class="symbol">:csslint</span></div><div class="line">    <span class="symbol">:htmlhint</span></div><div class="line">    <span class="symbol">:pigments</span></div><div class="line">    <span class="symbol">:atom-beautify</span></div><div class="line">    <span class="symbol">:open-in-browser</span></div><div class="line">    <span class="symbol">:tree-view-copy-relative-path</span></div><div class="line">    <span class="symbol">:pristine-ui</span></div><div class="line">    <span class="symbol">:duotone-dark-space-syntax</span></div><div class="line">    <span class="symbol">:emmet</span></div><div class="line">    <span class="symbol">:docblockr</span></div><div class="line">    <span class="symbol">:autocomplete-plus</span></div><div class="line">    <span class="symbol">:auto-id-class</span></div><div class="line">    <span class="symbol">:glowing-cursor</span></div><div class="line">    <span class="symbol">:tree-view-tautoresize</span></div><div class="line">    <span class="symbol">:jumpy</span></div><div class="line">    <span class="symbol">:stylus</span></div><div class="line">    <span class="symbol">:atom-pug</span></div><div class="line">    <span class="symbol">:atom-pug</span></div><div class="line">  ]</div><div class="line">  ;; 禁用插件</div><div class="line">  <span class="symbol">:disabled-packages</span> [</div><div class="line">    <span class="symbol">:autoupdate-packages</span></div><div class="line">    <span class="symbol">:about</span></div><div class="line">    <span class="symbol">:welcome</span></div><div class="line">    <span class="symbol">:status-bar</span></div><div class="line">    <span class="symbol">:zentabs</span></div><div class="line">    <span class="symbol">:file-icons</span></div><div class="line">    <span class="symbol">:easy-motion-redux</span></div><div class="line">    <span class="symbol">:relative-numbers</span></div><div class="line">    <span class="symbol">:encoding-selector</span></div><div class="line">  ]</div><div class="line">  ;; 编辑器的配置</div><div class="line">  <span class="symbol">:configuration</span></div><div class="line">  [</div><div class="line">    [<span class="string">"editor.fontFamily"</span> <span class="string">"Office Code pro"</span>]</div><div class="line">    [<span class="string">"editor.fontSize"</span> <span class="number">18</span>]</div><div class="line">    [<span class="string">"editor.preferredLineLength"</span> <span class="string">"900"</span>]</div><div class="line">    [<span class="string">"editor.tabLength"</span> <span class="number">4</span>]</div><div class="line">    [<span class="string">"editor.tabType"</span> <span class="string">"auto"</span>]</div><div class="line">    [<span class="string">"editor.atomicSoftTabs"</span> <span class="keyword">false</span>]</div><div class="line">    [<span class="string">"editor.nonWordCharacters"</span> <span class="string">"./\\()\"':,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;`~?"</span>]</div><div class="line">    [<span class="string">"core.themes"</span> [<span class="string">"pristine-ui"</span> <span class="string">"duotone-dark-space-syntax"</span>]]</div><div class="line">    [<span class="string">"proton.core.showTabBar"</span> <span class="keyword">true</span>]</div><div class="line">    [<span class="string">"proton.core.relativeLineNumbers"</span> <span class="keyword">false</span>]</div><div class="line">    [<span class="string">"proton.core.inputProvider"</span> <span class="symbol">:vim-mode-plus</span>]</div><div class="line">  ]</div><div class="line">  ;; 快捷键设置</div><div class="line">  <span class="symbol">:keybindings</span> &#123;&#125;</div><div class="line">  <span class="symbol">:keymaps</span> [&#123;<span class="symbol">:selector</span> <span class="string">".tree-view"</span> <span class="symbol">:keymap</span> [[<span class="string">"escape"</span> <span class="string">"tree-view:toggle"</span>]]&#125;</div><div class="line">            &#123;<span class="symbol">:selector</span> <span class="string">"atom-text-editor.vim-mode-plus:not(.normal-mode)"</span> <span class="symbol">:keymap</span> [[<span class="string">"f d"</span> <span class="string">"vim-mode-plus:activate-normal-mode"</span>]]&#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们只需要备份好这个配置文件，就可以，每次启动atom的时候它都会加载这个配置文件，对插件和配置进行重置。</p>
+<h3 id="在这里我顺便推荐几个资源："><a href="#在这里我顺便推荐几个资源：" class="headerlink" title="在这里我顺便推荐几个资源："></a>在这里我顺便推荐几个资源：</h3><ul>
+<li><a href="https://github.com/egoist/eme" target="_blank" rel="external">EME</a> mac下编辑markdown很方便，是我目前发现最好用的一款markdown编辑器</li>
+<li><a href="http://vimawesome.com/" target="_blank" rel="external">VimAwesome</a> 如果你执意用vim的这个网站你必须知道的。vim插件网站</li>
+<li><a href="http://spacemacs.org/" target="_blank" rel="external">Spacemacs</a> 如果你没有用过spacemacs的建议你去看看。</li>
+<li><a href="https://vim.rtorr.com/lang/zh_cn/" target="_blank" rel="external">Vim基本快捷键</a> Vim的基本快捷键，多语言的。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为什么说是Vim党呢？首先我是一个深度的Vim用户，自己的电脑上基本上可以兼容Vim的插件都有，所有浏览器，所有编辑器都是Vim的操作方式，当然包括我现在书写的markdown的软件&lt;a href=&quot;https://github.com/egoist/eme&quot;&gt;EME&lt;/a&gt;也是兼容的Vim的操作。&lt;/p&gt;
+&lt;p&gt;自从4年前，一次偶尔的机会接触到了Vim这款编辑器，就深深的被吸引了。&lt;/p&gt;
+&lt;p&gt;从刚开始实用别人的配置文件，直到最后自己用了2年的时间打磨出了自己的配置文件，我曾经用了1个月的时间翻遍了&lt;a href=&quot;http://vimawesome.com/&quot;&gt;VimAwesome&lt;/a&gt;的所有插件，从当初100+的插件配置到现在插件也就是10+配置文件也从当初3000+行到现在400+行，开始喜欢修改快捷键，喜欢什么都用插件来代替，到现在全部原生快捷键，能用&lt;code&gt;VimScript&lt;/code&gt;实现的功能都不会去用插件来代替。&lt;/p&gt;
+&lt;p&gt;也许我们对一个事物的追求到了一定程度的时候，我就回到起点，感觉一切都是最原始的是最好的。&lt;/p&gt;
+&lt;p&gt;我写这篇文章呢？&lt;/p&gt;
+&lt;p&gt;不管是vim 还是Gvim 还是spacemacs 他们都做的很好，也许是自己对UI要求过高吧，Atom的界面做的很棒。&lt;/p&gt;
+&lt;p&gt;sublime VScode 等等的编辑器，虽然也都有vim的插件支持，但是目前我发现的只有atom的这个插件做的是好的，速度也是相当快的。基本可以平移。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="vim emacs atom spacemacs" scheme="http://yoursite.com/tags/vim-emacs-atom-spacemacs/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Sublime配置</title>
-    <link href="http://yoursite.com/2014/09/27/Sublime-config/"/>
-    <id>http://yoursite.com/2014/09/27/Sublime-config/</id>
+    <link href="http://yoursite.com/2014/09/27/Sublime%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2014/09/27/Sublime配置/</id>
     <published>2014-09-27T09:40:45.000Z</published>
     <updated>2017-04-27T04:51:29.000Z</updated>
     
